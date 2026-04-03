@@ -19,63 +19,67 @@ current_dir = Path(__file__).parent
 app.mount("/static", StaticFiles(directory=os.path.join(Path(__file__).parent,
           "static")), name="static")
 
-# In-memory activity database
-activities = {
-    "Chess Club": {
-        "description": "Learn strategies and compete in chess tournaments",
-        "schedule": "Fridays, 3:30 PM - 5:00 PM",
-        "max_participants": 12,
-        "participants": ["michael@mergington.edu", "daniel@mergington.edu"]
-    },
-    "Programming Class": {
-        "description": "Learn programming fundamentals and build software projects",
-        "schedule": "Tuesdays and Thursdays, 3:30 PM - 4:30 PM",
-        "max_participants": 20,
-        "participants": ["emma@mergington.edu", "sophia@mergington.edu"]
-    },
-    "Gym Class": {
-        "description": "Physical education and sports activities",
-        "schedule": "Mondays, Wednesdays, Fridays, 2:00 PM - 3:00 PM",
-        "max_participants": 30,
-        "participants": ["john@mergington.edu", "olivia@mergington.edu"]
-    },
-    "Basketball Team": {
-        "description": "Team practices and competitive basketball games",
-        "schedule": "Mondays and Thursdays, 4:00 PM - 5:30 PM",
-        "max_participants": 15,
-        "participants": ["liam@mergington.edu", "ava@mergington.edu"]
-    },
-    "Soccer Club": {
-        "description": "Skill drills, teamwork, and friendly matches",
-        "schedule": "Wednesdays, 3:30 PM - 5:00 PM",
-        "max_participants": 18,
-        "participants": ["noah@mergington.edu", "mia@mergington.edu"]
-    },
-    "Painting Workshop": {
-        "description": "Explore painting techniques with acrylics and watercolors",
-        "schedule": "Tuesdays, 3:30 PM - 5:00 PM",
-        "max_participants": 16,
-        "participants": ["isabella@mergington.edu", "lucas@mergington.edu"]
-    },
-    "School Band": {
-        "description": "Practice instruments and perform at school events",
-        "schedule": "Fridays, 2:30 PM - 4:00 PM",
-        "max_participants": 25,
-        "participants": ["charlotte@mergington.edu", "henry@mergington.edu"]
-    },
-    "Debate Team": {
-        "description": "Develop public speaking and critical argumentation skills",
-        "schedule": "Mondays, 3:30 PM - 5:00 PM",
-        "max_participants": 14,
-        "participants": ["amelia@mergington.edu", "benjamin@mergington.edu"]
-    },
-    "Math Olympiad": {
-        "description": "Solve advanced math problems and prepare for competitions",
-        "schedule": "Thursdays, 3:30 PM - 5:00 PM",
-        "max_participants": 12,
-        "participants": ["evelyn@mergington.edu", "jack@mergington.edu"]
+def get_initial_activities():
+    return {
+        "Chess Club": {
+            "description": "Learn strategies and compete in chess tournaments",
+            "schedule": "Fridays, 3:30 PM - 5:00 PM",
+            "max_participants": 12,
+            "participants": ["michael@mergington.edu", "daniel@mergington.edu"]
+        },
+        "Programming Class": {
+            "description": "Learn programming fundamentals and build software projects",
+            "schedule": "Tuesdays and Thursdays, 3:30 PM - 4:30 PM",
+            "max_participants": 20,
+            "participants": ["emma@mergington.edu", "sophia@mergington.edu"]
+        },
+        "Gym Class": {
+            "description": "Physical education and sports activities",
+            "schedule": "Mondays, Wednesdays, Fridays, 2:00 PM - 3:00 PM",
+            "max_participants": 30,
+            "participants": ["john@mergington.edu", "olivia@mergington.edu"]
+        },
+        "Basketball Team": {
+            "description": "Team practices and competitive basketball games",
+            "schedule": "Mondays and Thursdays, 4:00 PM - 5:30 PM",
+            "max_participants": 15,
+            "participants": ["liam@mergington.edu", "ava@mergington.edu"]
+        },
+        "Soccer Club": {
+            "description": "Skill drills, teamwork, and friendly matches",
+            "schedule": "Wednesdays, 3:30 PM - 5:00 PM",
+            "max_participants": 18,
+            "participants": ["noah@mergington.edu", "mia@mergington.edu"]
+        },
+        "Painting Workshop": {
+            "description": "Explore painting techniques with acrylics and watercolors",
+            "schedule": "Tuesdays, 3:30 PM - 5:00 PM",
+            "max_participants": 16,
+            "participants": ["isabella@mergington.edu", "lucas@mergington.edu"]
+        },
+        "School Band": {
+            "description": "Practice instruments and perform at school events",
+            "schedule": "Fridays, 2:30 PM - 4:00 PM",
+            "max_participants": 25,
+            "participants": ["charlotte@mergington.edu", "henry@mergington.edu"]
+        },
+        "Debate Team": {
+            "description": "Develop public speaking and critical argumentation skills",
+            "schedule": "Mondays, 3:30 PM - 5:00 PM",
+            "max_participants": 14,
+            "participants": ["amelia@mergington.edu", "benjamin@mergington.edu"]
+        },
+        "Math Olympiad": {
+            "description": "Solve advanced math problems and prepare for competitions",
+            "schedule": "Thursdays, 3:30 PM - 5:00 PM",
+            "max_participants": 12,
+            "participants": ["evelyn@mergington.edu", "jack@mergington.edu"]
+        }
     }
-}
+
+
+# In-memory activity database
+activities = get_initial_activities()
 
 
 @app.get("/")
